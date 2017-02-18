@@ -29,9 +29,9 @@ module.exports = {
     contentBase: './',
     hot: true, // live reload,
     inline: true,
-    devtool: 'eval'
+    devtool: 'eval-source-map'
   },
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   plugins: [
     // Enables Hot Modules Replacement
     new webpack.HotModuleReplacementPlugin(),
