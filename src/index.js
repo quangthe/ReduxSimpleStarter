@@ -8,6 +8,8 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
+const API_KEY = 'AIzaSyBzzj_xzDX-CYKDKOc5JreUJw-z-OvkVbA';
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
