@@ -5,7 +5,7 @@ module.exports = {
   entry: [
     'webpack/hot/dev-server',
     'webpack/hot/only-dev-server',
-    './src/index.js'
+    './src/index.jsx'
   ],
   output: {
     path: __dirname,
@@ -29,14 +29,20 @@ module.exports = {
     contentBase: './',
     hot: true, // live reload,
     inline: true,
-    devtool: 'eval-source-map'
+    devtool: 'source-map'
   },
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   plugins: [
     // Enables Hot Modules Replacement
     new webpack.HotModuleReplacementPlugin(),
     // Allows error warnings but does not stop compiling.
     new webpack.NoErrorsPlugin(),
-    new DashboardPlugin()
+    new DashboardPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false
+      }
+    })
   ]
 };
