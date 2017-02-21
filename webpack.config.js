@@ -29,7 +29,8 @@ module.exports = {
     contentBase: './',
     hot: true, // live reload,
     inline: true,
-    devtool: 'source-map'
+    devtool: 'source-map',
+    port: 3000
   },
   devtool: 'source-map',
   plugins: [
