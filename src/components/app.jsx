@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './search_bar';
@@ -29,9 +30,12 @@ export default class App extends Component {
   }
 
   render() {
+    // only call _videoSearch method after 800ms
+    const videoSearch = _.debounce((term) => {this._videoSearch(term)}, 800);
+
     return (
       <div>
-        <SearchBar onSearchTermChange={term => this._videoSearch(term)} />
+        <SearchBar onSearchTermChange={term => videoSearch(term)} />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList videos={this.state.videos}
                    onVideoSelect={selectedVideo => this.setState({selectedVideo})} />
