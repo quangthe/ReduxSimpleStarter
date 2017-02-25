@@ -13,12 +13,14 @@ export default class App extends Component {
       selectedVideo: null
     };
 
+    this._videoSearch('Nissan GTR 2017');
+  }
+
+  _videoSearch(term) {
     YTSearch({
       key: this.props.apiKey,
-      term: 'Nissan GTR'
+      term: term
     }, (videos) => {
-      console.log(videos);
-
       this.setState({
         videos: videos,
         selectedVideo: videos[0]
@@ -26,12 +28,10 @@ export default class App extends Component {
     });
   }
 
-
-
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={term => this._videoSearch(term)} />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList videos={this.state.videos}
                    onVideoSelect={selectedVideo => this.setState({selectedVideo})} />
